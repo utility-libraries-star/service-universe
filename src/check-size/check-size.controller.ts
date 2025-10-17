@@ -12,6 +12,13 @@ export class CheckSizeController {
     }
 
     const items = await this.checkSizeService.checkItems(body.items);
-    return { items };
+
+    return new Response(JSON.stringify({ items }), {
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+      },
+      status: 200,
+    });
   }
 }
